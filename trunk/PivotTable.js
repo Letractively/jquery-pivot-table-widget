@@ -76,7 +76,6 @@
                 Class: ''
             };
 
-            var parent = this.element;
             for (var i in settings.fields) {
                 var field = settings.fields[i];
                 if (!$.isPlainObject(field)) {
@@ -86,14 +85,13 @@
             if (!settings.jsonData || settings.jsonData.length == 0) {
                 this._getData(this.element);
                 this.element.html('');
-                parent = this.element.parent();
             } else {
                 this._getFilterData();
             }
 
             this._initFields();
             var _uiPivotContainer = (this._uiPivotContainer = $('<div class="ui-widget ui-helper-clearfix">').css({ 'font-size': '0.8em', 'padding': '0.2em' }));
-            $(parent).append(_uiPivotContainer);
+            $(this.element).before(_uiPivotContainer);
             if (settings.showFieldLists) this._createFieldList();
             this._filteredRows = this._getAllRowIndex();
             this._refresh();
@@ -161,8 +159,8 @@
             //Look for fields[Column Names] in the headers of first row of table unless provided in settings.
             if (settings.fields.length == 0) {
                 element.find('tr:first>').each(function (index) {
-                    var name = $(this).text().replace(/[\n\r]+/, ' ');
-                    settings.fields.push($.extend({}, that._fieldType, { fieldName: $(this).text() }));
+                    var name = $.trim($(this).text());
+                    settings.fields.push($.extend({}, that._fieldType, { fieldName: name }));
 
                 });
             }
