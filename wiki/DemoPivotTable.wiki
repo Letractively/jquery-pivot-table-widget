@@ -3,12 +3,5 @@ Demo for the pivot table.
 
 = Introduction =
 
-Add your content here.
+To view demo visit http://jquery-pivot-table-widget.googlecode.com/svn/trunk/pivot.html
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
