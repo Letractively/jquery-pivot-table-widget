@@ -1,3 +1,8 @@
+/*
+ * Developer : Sanjay Kumar (sanjay1982@gmail.com)
+ * Date : 17/01/2013
+ * All code (c)2013 all rights reserved
+ */
 /// <reference path="jquery-1.8.3.js" />
 /// <reference path="jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.js" />
 (function ($, undefined) {
