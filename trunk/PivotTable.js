@@ -519,8 +519,9 @@
                 if (visitedAncestors[visitedAncestors.length - 1] != node) {
                     visitedAncestors.push(node);
                     context.onStartChildren(that, node);
+                    var lenToVisit = toVisit.length;
                     for (var i in node.v) {
-                        toVisit.push(new context.nodeType(node.v[i], i, node));
+                        toVisit.splice(lenToVisit, 0, new context.nodeType(node.v[i], i, node));
                     }
                     that._asyncProcess.addFirst(that._processHeaders, that, [context]);
                     return;
