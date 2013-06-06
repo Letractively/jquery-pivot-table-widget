@@ -305,17 +305,24 @@
         _createSummaryTypeList: function (fieldName, currVal) {
             var that = this;
             var ulist = $('<select>').addClass("ui-pivot-sum-type").attr('name', fieldName);
-            for (var i in this._summaryTypes) {
-                var op = $('<option>').text(i);
-                if (currVal == i) op.attr('selected', true);
-                ulist.append(op);
+            if($.isFunction(currVal)){
+              var op = $('<option>').text('Custom').attr('selected', true);
+              ulist.append(op);
             }
-            ulist.change(function () {
-                var fName = $(this).attr('name');
-                var fIndx = that._fieldIndex[fName];
-                that.settings.fields[fIndx].summaryType = $(this).val();
-                that._refresh();
-            });
+            else{
+              for (var i in this._summaryTypes) {
+                  var op = $('<option>').text(i);
+                  if (currVal == i) op.attr('selected', true);
+                  ulist.append(op);
+              }
+            
+              ulist.change(function () {
+                  var fName = $(this).attr('name');
+                  var fIndx = that._fieldIndex[fName];
+                  that.settings.fields[fIndx].summaryType = $(this).val();
+                  that._refresh();
+              });
+            }
             return ulist;
         },
         _createFieldList: function () {
@@ -663,7 +670,8 @@
                                 value: settings.jsonData[field.fieldName][columnHeaders[header]]
                             };
                             //Call summary method with supplied object.
-                            curSum[index] = that._summaryTypes[field.summaryType](obj);
+                          var summaryFunction = $.isFunction(that._summaryTypes)?that._summaryTypes:that._summaryTypes[field.summaryType];
+                            curSum[index] = summaryFunction (obj);
                             if (obj.value) {    //If this cell has value then add class from class fields.
                                 for (var cf in settings.classFields) {
                                     var field = settings.fields[settings.classFields[cf]];
