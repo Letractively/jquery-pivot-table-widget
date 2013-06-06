@@ -686,7 +686,7 @@
                 //Add value cell as we have sum and classes.
                 for (var vf in settings.valueFields) {
                     var inx = settings.valueFields[vf];
-                    $(uiTR).append($('<td>').text(curSum[inx] > 0 ? curSum[inx] : '').addClass(classes[inx].join(' ')));
+                    $(uiTR).append($('<td>').text(curSum[inx] != 0 ? curSum[inx] : '').addClass(classes[inx].join(' ')));
                 }
 
                 return curSum;
