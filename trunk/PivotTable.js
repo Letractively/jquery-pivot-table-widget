@@ -403,7 +403,8 @@
                         that._getFieldsFromUILists();
                         that._refresh();
                     }
-                }
+                },
+                cancel:':input,button,a'
             }).find('li').addClass('ui-state-default').find('span').disableSelection();
             uiFieldLists.find('ul.ui-pivot-field-list-Value').on("sortreceive", function (event, ui) {
                 $(ui.item).find('.ui-pivot-sum-type').show();
