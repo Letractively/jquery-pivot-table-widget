@@ -397,7 +397,7 @@
         );
             this._uiPivotContainer.append(portlet.append(uiFieldLists.hide()));
             uiFieldLists.find('ul').sortable({
-                handle:".ui-pivot-field-handle"
+                handle:".ui-pivot-field-handle",
                 connectWith: ".ui-pivot-field-list",
                 placeholder: "ui-state-highlight",
                 items: "li:not(.ui-pivot-field-list-caption)",
