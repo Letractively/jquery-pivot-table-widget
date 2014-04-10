@@ -336,7 +336,10 @@
                     var field = settings.fields[this._fieldLists[f][i]];
                     var filter = this._createFilterList(field.fieldName);
                     var li = $('<li>');
-                    li.append($("<div class='ui-pivot-field-handle'><span class='ui-icon ui-icon-arrow-4-diag'></span></div>"));
+                    li.append($("<div class='ui-pivot-field-handle'></div>").button({
+                        icons: { primary: "ui-icon-arrow-4-diag" },
+                        text: false
+                    }));
                     li.append($('<span>').addClass('ui-pivot-field-text').text(field.fieldName));
                     li.append($('<button>').button({
                         icons: { primary: "ui-icon-triangle-1-s" },
