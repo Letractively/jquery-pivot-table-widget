@@ -335,7 +335,9 @@
                 for (var i in this._fieldLists[f]) {
                     var field = settings.fields[this._fieldLists[f][i]];
                     var filter = this._createFilterList(field.fieldName);
-                    var li = $('<li>').append($('<span>').addClass('ui-pivot-field-text').text(field.fieldName));
+                    var li = $('<li>');
+                    li.append($("<div class='ui-pivot-field-handle'><span class='ui-icon ui-icon-arrow-4-diag'></span></div>"));
+                    li.append($('<span>').addClass('ui-pivot-field-text').text(field.fieldName));
                     li.append($('<button>').button({
                         icons: { primary: "ui-icon-triangle-1-s" },
                         text: false
@@ -351,7 +353,6 @@
 						return false;
                     }));
                     li.append(that._createSummaryTypeList(field.fieldName, field.summaryType).hide());
-                    li.prepend("<div class='ui-pivot-field-handle'><span class='ui-icon ui-icon-arrow-4-diag'></span></div>");
                     uiList.append(li);
                 }
                 uiFieldLists.append(uiList);
