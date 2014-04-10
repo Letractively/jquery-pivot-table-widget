@@ -351,6 +351,7 @@
 						return false;
                     }));
                     li.append(that._createSummaryTypeList(field.fieldName, field.summaryType).hide());
+                    li.prepend("<div class='ui-pivot-field-handle'><span class='ui-icon ui-icon-arrow-4-diag'></span></div>");
                     uiList.append(li);
                 }
                 uiFieldLists.append(uiList);
@@ -395,6 +396,7 @@
         );
             this._uiPivotContainer.append(portlet.append(uiFieldLists.hide()));
             uiFieldLists.find('ul').sortable({
+                handle:".ui-pivot-field-handle"
                 connectWith: ".ui-pivot-field-list",
                 placeholder: "ui-state-highlight",
                 items: "li:not(.ui-pivot-field-list-caption)",
