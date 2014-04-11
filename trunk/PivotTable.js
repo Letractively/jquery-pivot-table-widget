@@ -626,7 +626,7 @@
                     if (node.p != null) {
                         tr.prepend($(that._tableHeader.clone()).text(node.n).attr('rowspan', node.c));
                         node.p.tr = node.p.tr || node.tr;
-                        node.p.c = (node.p.c || 0) + 1;
+                        node.p.c = (node.p.c || 0) + (node.c || 1);
                         var colsPTot = node.p.totRow.find('td');
                         node.totRow.find('td').each(function (index) {
                             var col = $(colsPTot.get(index));
@@ -645,11 +645,6 @@
                     cols.text('0').appendTo(node.totRow).replaceWith('<td>');
                     var inc = ((node.p == null || that.settings.showRunningTotal) ? 1 : 0);
                     node.c = (node.c || 0) + inc;
-                    var currNode  = node.p;
-                  while(currNode){
-                    currNode.c = (currNode.c || 0) + inc;
-                    currNode = currNode.p;
-                  }
                     //}
 
 
