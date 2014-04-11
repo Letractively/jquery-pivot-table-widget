@@ -643,7 +643,12 @@
                     node.totRow = $('<tr>').addClass("ui-pivot-total").append($(that._tableHeader.clone()).text('Total').attr('colspan', that.settings.rowFields.length - node.d));
                     var cols = this.valueRow.find('th').clone();
                     cols.text('0').appendTo(node.totRow).replaceWith('<td>');
-                    node.c = (node.c || 0) + ((node.p == null || that.settings.showRunningTotal) ? 1 : 0);
+                    var inc = ((node.p == null || that.settings.showRunningTotal) ? 1 : 0);
+                    node.c = (node.c || 0) + inc;
+                    var currNode  = node.p;
+                  while(currNode){
+                    currNode.c = (currNode.c || 0) + inc;
+                  }
                     //}
 
 
