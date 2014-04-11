@@ -648,6 +648,7 @@
                     var currNode  = node.p;
                   while(currNode){
                     currNode.c = (currNode.c || 0) + inc;
+                    currNode = currNode.p;
                   }
                     //}
 
